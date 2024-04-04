@@ -27,7 +27,7 @@ class chat : AppCompatActivity() {
         binding.chatRecyclerView.adapter=messageAdapter
 
         setContentView(binding.root)
-        receiverName = "쌈@뽕한 바텐더"
+        receiverName = "쌈뽕?한 바텐더"
         supportActionBar?.title = receiverName
         messageList.clear()
 
