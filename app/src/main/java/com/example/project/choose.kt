@@ -1,6 +1,7 @@
 package com.example.project
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -27,7 +28,13 @@ class choose : AppCompatActivity() {
             "tomcollins",
             "whitelady"
         )
-        val adapter = CocktaillistAdapter(cock_name)
+        val adapter = CocktaillistAdapter(cock_name, object : OnCocktailClickListener {
+            override fun onCocktailClick(name: String) {
+                val intent = Intent(this@choose, select::class.java)
+                intent.putExtra("COCKTAIL_NAME", name)
+                startActivity(intent)
+            }
+        })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -52,11 +59,4 @@ class choose : AppCompatActivity() {
 //            startActivity(intent)
 //        }
     }
-}
-
-fun readTextFile(context: Context, resourceId: Int): String {
-    val inputStream = context.resources.openRawResource(resourceId)
-    val reader = BufferedReader(inputStream.reader())
-    val content = reader.use { it.readText() }
-    return content
 }
