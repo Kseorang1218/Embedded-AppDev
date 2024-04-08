@@ -1,6 +1,7 @@
 package com.example.project
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -67,9 +68,10 @@ class Custom : AppCompatActivity() {
         builder.setTitle("칵테일 만들기")
         builder.setMessage("해당 재료로 칵테일을 만드시겠습니까?")
         builder.setPositiveButton("확인") { dialogInterface: DialogInterface, _: Int ->
-            // TODO
             // 확인을 클릭하면 칵테일 만들기 동작을 수행
             dialogInterface.dismiss() // 다이얼로그 닫기
+            val intent = Intent(this, CustomMethodChoose::class.java)
+            startActivity(intent)
         }
         builder.setNegativeButton("취소") { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss() // 다이얼로그 닫기
