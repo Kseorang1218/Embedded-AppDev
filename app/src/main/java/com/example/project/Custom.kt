@@ -1,8 +1,10 @@
 package com.example.project
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,7 +22,15 @@ class Custom : AppCompatActivity() {
         val ingredientsList = listOf(
             Ingredient("a"),
             Ingredient("b"),
-            Ingredient("c")
+            Ingredient("c"),
+            Ingredient("d"),
+            Ingredient("e"),
+            Ingredient("f"),
+            Ingredient("g"),
+            Ingredient("h"),
+            Ingredient("i"),
+            Ingredient("j"),
+
         )
         val adapter = IngredientAdapter(ingredientsList)
         recyclerView.adapter = adapter
@@ -32,8 +42,31 @@ class Custom : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btn = findViewById<Button>(R.id.button8)
-        btn.setOnClickListener {
+
+        val backBtn = findViewById<Button>(R.id.button8)
+        backBtn.setOnClickListener {
             finish()}
+
+        val btn = findViewById<Button>(R.id.button9)
+        btn.setOnClickListener {
+            showConfirmationDialog()
+        }
+    }
+
+    // 확인 다이얼로그 표시
+    private fun showConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("칵테일 만들기")
+        builder.setMessage("해당 재료로 칵테일을 만드시겠습니까?")
+        builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->
+            // TODO
+            // 확인을 클릭하면 칵테일 만들기 동작을 수행
+            dialogInterface.dismiss() // 다이얼로그 닫기
+        }
+        builder.setNegativeButton("취소") { dialogInterface: DialogInterface, i: Int ->
+            dialogInterface.dismiss() // 다이얼로그 닫기
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 }
