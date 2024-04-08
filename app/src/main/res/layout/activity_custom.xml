@@ -6,16 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Custom" >
+    tools:context=".Custom">
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="117dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="뒤로가기" />
+        android:text="뒤로가기"
+        tools:icon="@android:drawable/ic_input_delete" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cocktail_ingredients_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="638dp" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="선택" />
 </LinearLayout>
