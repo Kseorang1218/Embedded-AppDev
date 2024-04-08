@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class Custom : AppCompatActivity() {
+
+    private var totalQuantity = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +33,6 @@ class Custom : AppCompatActivity() {
             Ingredient("h"),
             Ingredient("i"),
             Ingredient("j"),
-
         )
         val adapter = IngredientAdapter(ingredientsList)
         recyclerView.adapter = adapter
@@ -45,11 +47,17 @@ class Custom : AppCompatActivity() {
 
         val backBtn = findViewById<Button>(R.id.button8)
         backBtn.setOnClickListener {
-            finish()}
+            finish()
+        }
 
         val btn = findViewById<Button>(R.id.button9)
         btn.setOnClickListener {
-            showConfirmationDialog()
+            calculateTotalQuantity(ingredientsList)
+            if (totalQuantity > 10) {
+                showWarningDialog()
+            } else {
+                showConfirmationDialog()
+            }
         }
     }
 
@@ -68,5 +76,25 @@ class Custom : AppCompatActivity() {
         }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    // 경고 다이얼로그 표시
+    private fun showWarningDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("경고")
+        builder.setMessage("재료의 양이 너무 많습니다. \n 컵이 넘칠 수 있습니다.")
+        builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->
+            dialogInterface.dismiss() // 다이얼로그 닫기
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    // 재료의 양의 총 합 계산
+    private fun calculateTotalQuantity(ingredientsList: List<Ingredient>) {
+        totalQuantity = 0
+        ingredientsList.forEach { ingredient ->
+            totalQuantity += ingredient.quantity
+        }
     }
 }
