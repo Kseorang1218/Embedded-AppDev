@@ -46,13 +46,13 @@ class Custom : AppCompatActivity() {
             insets
         }
 
-        val backBtn = findViewById<Button>(R.id.button8)
+        val backBtn = findViewById<Button>(R.id.backBtn)
         backBtn.setOnClickListener {
             finish()
         }
 
-        val btn = findViewById<Button>(R.id.button9)
-        btn.setOnClickListener {
+        val selectBtn = findViewById<Button>(R.id.selectBtn)
+        selectBtn.setOnClickListener {
             calculateTotalQuantity(ingredientsList)
             if (totalQuantity > 10) {
                 showWarningDialog()
@@ -62,30 +62,30 @@ class Custom : AppCompatActivity() {
         }
     }
 
-    // 확인 다이얼로그 표시
-    private fun showConfirmationDialog() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("칵테일 만들기")
-        builder.setMessage("해당 재료로 칵테일을 만드시겠습니까?")
-        builder.setPositiveButton("확인") { dialogInterface: DialogInterface, _: Int ->
-            // 확인을 클릭하면 칵테일 만들기 동작을 수행
-            dialogInterface.dismiss() // 다이얼로그 닫기
-            val intent = Intent(this, CustomMethodChoose::class.java)
-            startActivity(intent)
-        }
-        builder.setNegativeButton("취소") { dialogInterface: DialogInterface, _: Int ->
-            dialogInterface.dismiss() // 다이얼로그 닫기
-        }
-        val dialog = builder.create()
-        dialog.show()
-    }
-
     // 경고 다이얼로그 표시
     private fun showWarningDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("경고")
         builder.setMessage("재료의 양이 너무 많습니다. \n 컵이 넘칠 수 있습니다.")
         builder.setPositiveButton("확인") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss() // 다이얼로그 닫기
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    // 확인 다이얼로그 표시
+    private fun showConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("칵테일 만들기")
+        builder.setMessage("해당 재료로 칵테일을 만드시겠습니까?")
+        builder.setPositiveButton("확인") { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.dismiss() // 다이얼로그 닫기
+            // 칵테일 만들기 동작을 수행
+            val intent = Intent(this, CustomMethodChoose::class.java)
+            startActivity(intent)
+        }
+        builder.setNegativeButton("취소") { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss() // 다이얼로그 닫기
         }
         val dialog = builder.create()

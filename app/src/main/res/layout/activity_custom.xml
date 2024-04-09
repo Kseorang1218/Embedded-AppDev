@@ -9,7 +9,7 @@
     tools:context=".Custom">
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="뒤로가기"
@@ -21,7 +21,7 @@
         android:layout_height="638dp" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/selectBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"

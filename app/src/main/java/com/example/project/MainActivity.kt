@@ -18,18 +18,18 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btn1 = findViewById<Button>(R.id.button1)
-        btn1.setOnClickListener {
+        val chooseBtn = findViewById<Button>(R.id.chooseBtn)
+        chooseBtn.setOnClickListener {
             val intent = Intent(this, choose::class.java)
             startActivity(intent)
         }
-        val btn2 = findViewById<Button>(R.id.button2)
-        btn2.setOnClickListener {
+        val recommendBtn = findViewById<Button>(R.id.recommendBtn)
+        recommendBtn.setOnClickListener {
             val intent = Intent(this, chat::class.java)
             startActivity(intent)
         }
-        val btn3 = findViewById<Button>(R.id.custom)
-        btn3.setOnClickListener {
+        val customBtn = findViewById<Button>(R.id.customBtn)
+        customBtn.setOnClickListener {
             val intent = Intent(this, Custom::class.java)
             startActivity(intent)
         }
