@@ -23,19 +23,19 @@ class select : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val name = intent.getStringExtra("COCKTAIL_NAME") ?: return
+        val cocktailName = intent.getStringExtra("COCKTAIL_NAME") ?: return
 
-        val img = findViewById<ImageView>(R.id.cocktail_img)
-        val imageId = resources.getIdentifier(name, "drawable", packageName)
+        val cocktailImg = findViewById<ImageView>(R.id.cocktail_img)
+        val imageId = resources.getIdentifier(cocktailName, "drawable", packageName)
 
-        val content= readTextFile(this,name)
-        img.setImageResource(imageId)
-        val textView = findViewById<TextView>(R.id.textView)
-        textView.text = content
-        val nameView = findViewById<TextView>(R.id.cocktail_name)
-        nameView.text = name
-        val btn = findViewById<Button>(R.id.button7)
-        btn.setOnClickListener {
+        val content= readTextFile(this,cocktailName)
+        cocktailImg.setImageResource(imageId)
+        val cocktailTextView = findViewById<TextView>(R.id.textView)
+        cocktailTextView.text = content
+        val cocktailNameView = findViewById<TextView>(R.id.cocktail_name)
+        cocktailNameView.text = cocktailName
+        val backBtn = findViewById<Button>(R.id.backBtn)
+        backBtn.setOnClickListener {
             finish()
         }
     }

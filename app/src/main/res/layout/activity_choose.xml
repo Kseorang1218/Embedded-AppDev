@@ -9,15 +9,13 @@
     tools:context=".choose">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_back"
+        android:id="@+id/backBtn"
         android:layout_width="117dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_background"
         android:text="뒤로가기"
         android:textColor="#FFFFFF"
         android:layout_margin="5dp"/>
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cocktail_list"

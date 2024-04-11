@@ -19,7 +19,7 @@ class choose : AppCompatActivity() {
         setContentView(R.layout.activity_choose)
 
         val recyclerView: RecyclerView = findViewById(R.id.cocktail_list)
-        val cock_name = listOf(
+        val cocktail_names = listOf(
             "matini",
             "ginfizz",
             "gintonic",
@@ -28,7 +28,7 @@ class choose : AppCompatActivity() {
             "tomcollins",
             "whitelady"
         )
-        val adapter = CocktaillistAdapter(cock_name, object : OnCocktailClickListener {
+        val adapter = CocktaillistAdapter(cocktail_names, object : OnCocktailClickListener {
             override fun onCocktailClick(name: String) {
                 val intent = Intent(this@choose, select::class.java)
                 intent.putExtra("COCKTAIL_NAME", name)
@@ -43,12 +43,11 @@ class choose : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btn7 = findViewById<Button>(R.id.btn_back)
-        btn7.setOnClickListener {
+        val backBtn = findViewById<Button>(R.id.backBtn)
+        backBtn.setOnClickListener {
             finish()
         }
-
-
+        
 
 //        val btn = findViewById<Button>(R.id.button)
 //        btn.setOnClickListener {
