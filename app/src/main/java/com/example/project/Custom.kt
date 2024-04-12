@@ -15,26 +15,27 @@ import androidx.recyclerview.widget.RecyclerView
 class Custom : AppCompatActivity() {
 
     private var totalQuantity = 0
+    val ingredientsList = listOf(
+        Ingredient("a"),
+        Ingredient("b"),
+        Ingredient("c"),
+        Ingredient("d"),
+        Ingredient("e"),
+        Ingredient("f"),
+        Ingredient("g"),
+        Ingredient("h"),
+        Ingredient("i"),
+        Ingredient("j")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_custom)
 
+
         // RecyclerView를 찾고 어댑터 설정
         val recyclerView: RecyclerView = findViewById(R.id.cocktail_ingredients_list)
-        val ingredientsList = listOf(
-            Ingredient("a"),
-            Ingredient("b"),
-            Ingredient("c"),
-            Ingredient("d"),
-            Ingredient("e"),
-            Ingredient("f"),
-            Ingredient("g"),
-            Ingredient("h"),
-            Ingredient("i"),
-            Ingredient("j"),
-        )
         val adapter = IngredientAdapter(ingredientsList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -81,8 +82,9 @@ class Custom : AppCompatActivity() {
         builder.setMessage("해당 재료로 칵테일을 만드시겠습니까?")
         builder.setPositiveButton("확인") { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss() // 다이얼로그 닫기
-            // 칵테일 만들기 동작을 수행
+            // 커스텀된 레시피로 칵테일 만들기
             val intent = Intent(this, CustomMethod::class.java)
+            intent.putExtra("IngredientList", ArrayList<Ingredient>(ingredientsList))
             startActivity(intent)
         }
         builder.setNegativeButton("취소") { dialogInterface: DialogInterface, _: Int ->
