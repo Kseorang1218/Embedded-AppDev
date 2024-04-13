@@ -24,6 +24,10 @@ class SetBuildOrder : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        val callback = SimpleItemTouchHelperCallback(adapter)
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(recyclerView)
+
         // 시스템 바 인셋 적용
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -34,6 +38,11 @@ class SetBuildOrder : AppCompatActivity() {
         val backBtn = findViewById<Button>(R.id.backBtn)
         backBtn.setOnClickListener {
             finish()
+        }
+
+        val selectBtn = findViewById<Button>(R.id.selectBtn)
+        selectBtn.setOnClickListener {
+            // TODO
         }
     }
 }

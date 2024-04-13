@@ -26,7 +26,6 @@ class CustomMethod : AppCompatActivity() {
         val stiringBtn = findViewById<Button>(R.id.stiringBtn)
         stiringBtn.setOnClickListener {
             // TODO
-            finish()
         }
     }
 }
