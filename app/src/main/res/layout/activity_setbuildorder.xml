@@ -20,7 +20,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cocktail_ingredients_list"
         android:layout_width="match_parent"
-        android:layout_height="638dp" />
+        android:layout_height="744dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/selectBtn"

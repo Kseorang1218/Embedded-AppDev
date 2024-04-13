@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class SetBuildOrder : AppCompatActivity() {
@@ -14,18 +16,13 @@ class SetBuildOrder : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_setbuildorder)
-        val receivedList = intent.getSerializableExtra("IngredientList", ) as? ArrayList<Ingredient>
+        val receivedList = intent.getSerializableExtra("IngredientList") as? ArrayList<Ingredient>
+        val filteredList = ArrayList(receivedList?.filter { it.quantity > 0 } ?: listOf())
 
-        println(receivedList)
-
+        val adapter = SetBuildAdapter(filteredList)
         val recyclerView: RecyclerView = findViewById(R.id.cocktail_ingredients_list)
-//        val adapter = CocktaillistAdapter(cocktail_names, object : OnCocktailClickListener {
-//            override fun onCocktailClick(name: String) {
-//                val intent = Intent(this@choose, select::class.java)
-//                intent.putExtra("COCKTAIL_NAME", name)
-//                startActivity(intent)
-//            }
-//        })
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         // 시스템 바 인셋 적용
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

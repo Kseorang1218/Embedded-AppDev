@@ -16,16 +16,13 @@ class Custom : AppCompatActivity() {
 
     private var totalQuantity = 0
     val ingredientsList = listOf(
-        Ingredient("a"),
-        Ingredient("b"),
-        Ingredient("c"),
-        Ingredient("d"),
-        Ingredient("e"),
-        Ingredient("f"),
-        Ingredient("g"),
-        Ingredient("h"),
-        Ingredient("i"),
-        Ingredient("j")
+        Ingredient("ex1"),
+        Ingredient("ex2"),
+        Ingredient("ex3"),
+        Ingredient("ex4"),
+        Ingredient("ex5"),
+        Ingredient("ex6"),
+        Ingredient("ex7"),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
