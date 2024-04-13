@@ -16,10 +16,12 @@ class SetBuildOrder : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_setbuildorder)
-        val receivedList = intent.getSerializableExtra("IngredientList") as? ArrayList<Ingredient>
-        val filteredList = ArrayList(receivedList?.filter { it.quantity > 0 } ?: listOf())
 
+        val receivedList = intent.getSerializableExtra("IngredientList") as? ArrayList<Ingredient>
+        // 양이 0인 재료(즉, 선택하지 않은 재료)는 제외
+        val filteredList = ArrayList(receivedList?.filter { it.quantity > 0 } ?: listOf())
         val adapter = SetBuildAdapter(filteredList)
+
         val recyclerView: RecyclerView = findViewById(R.id.cocktail_ingredients_list)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)

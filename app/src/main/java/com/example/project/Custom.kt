@@ -80,7 +80,7 @@ class Custom : AppCompatActivity() {
         builder.setPositiveButton("확인") { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss() // 다이얼로그 닫기
             // 커스텀된 레시피로 칵테일 만들기
-            val intent = Intent(this, CustomMethod::class.java)
+            val intent = Intent(this, ChooseCustomMethod::class.java)
             intent.putExtra("IngredientList", ArrayList<Ingredient>(ingredientsList))
             startActivity(intent)
         }

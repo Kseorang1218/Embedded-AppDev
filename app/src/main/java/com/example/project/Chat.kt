@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.project.databinding.ActivityChatBinding
 
-class chat : AppCompatActivity() {
+class Chat : AppCompatActivity() {
 
     private  lateinit var receiverName: String
 

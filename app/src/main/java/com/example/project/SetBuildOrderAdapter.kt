@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.Callback.makeMovementFlags
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Collections
 
@@ -21,7 +20,7 @@ class SetBuildAdapter(private var ingredientList: ArrayList<Ingredient>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.format_ingredientlist, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.format_setbuildorder, parent, false)
         return IngredientViewHolder(view)
     }
 
@@ -54,13 +53,12 @@ class SimpleItemTouchHelperCallback(val adapter: ItemMoveCallback) : ItemTouchHe
     }
 
     override fun onMove(recyclerView: RecyclerView, source: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-        Log.d("ItemTouchHelper", "onMove from: ${source.adapterPosition} to: ${target.adapterPosition}")
         adapter.onItemMove(source.adapterPosition, target.adapterPosition)
         return true
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        // 스와이프 삭제 기능은 사용하지 않으므로 구현하지 않습니다.
+        // 스와이프 삭제 기능은 사용하지 않으므로 구현하지 않음
     }
 }
 

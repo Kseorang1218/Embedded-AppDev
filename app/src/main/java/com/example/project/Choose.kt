@@ -1,6 +1,5 @@
 package com.example.project
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,9 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.io.BufferedReader
 
-class choose : AppCompatActivity() {
+class Choose : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +28,7 @@ class choose : AppCompatActivity() {
         )
         val adapter = CocktaillistAdapter(cocktail_names, object : OnCocktailClickListener {
             override fun onCocktailClick(name: String) {
-                val intent = Intent(this@choose, select::class.java)
+                val intent = Intent(this@Choose, select::class.java)
                 intent.putExtra("COCKTAIL_NAME", name)
                 startActivity(intent)
             }
