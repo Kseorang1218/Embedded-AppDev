@@ -64,7 +64,7 @@ class Custom : AppCompatActivity() {
     private fun showWarningDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("경고")
-        builder.setMessage("재료의 양이 너무 많습니다. \n 컵이 넘칠 수 있습니다.")
+        builder.setMessage("재료의 양이 너무 많습니다. \n컵이 넘칠 수 있습니다.")
         builder.setPositiveButton("확인") { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss() // 다이얼로그 닫기
         }
