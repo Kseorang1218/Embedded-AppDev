@@ -23,6 +23,7 @@ class Custom : AppCompatActivity() {
         Ingredient("ex5"),
         Ingredient("ex6"),
         Ingredient("ex7"),
+        Ingredient("ex8"),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

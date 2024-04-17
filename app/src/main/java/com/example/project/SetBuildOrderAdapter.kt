@@ -36,6 +36,10 @@ class SetBuildAdapter(private var ingredientList: ArrayList<Ingredient>) :
         Collections.swap(ingredientList, fromPosition, toPosition)
         notifyItemMoved(fromPosition, toPosition)
     }
+
+    fun getItems(): ArrayList<Ingredient>{
+        return ingredientList
+    }
 }
 
 interface ItemMoveCallback {
@@ -53,8 +57,11 @@ class SimpleItemTouchHelperCallback(val adapter: ItemMoveCallback) : ItemTouchHe
     }
 
     override fun onMove(recyclerView: RecyclerView, source: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-        adapter.onItemMove(source.adapterPosition, target.adapterPosition)
+        val fromPos = source.adapterPosition
+        val toPos = target.adapterPosition
+        adapter.onItemMove(fromPos, toPos)
         return true
+
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
